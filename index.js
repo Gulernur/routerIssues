@@ -12,6 +12,7 @@ import { initFindUser } from "./pages/findUser/findUser.js" */
 
 window.addEventListener("load", async () => {
 
+  const templateHome = await loadHtml("./home.html")
   const templateAbout = await loadHtml("./about.html")
   const templateReservation = await loadHtml("./reservation/reservation.html")
   const templateGoCarting = await loadHtml("./activities/goCarting.html")
@@ -34,22 +35,21 @@ window.addEventListener("load", async () => {
       }
     })
     .on({
-      //For very simple "templates", you can just insert your HTML directly like below
-      "/": () => document.getElementById("content").innerHTML =
-        `<h2>Home</h2>
-      <p style='margin-top:2em'>
-      This is the content of the Home Route
-      </p>
-     `,
-      "/about": () => renderTemplate(templateAbout, "content"),
+
+      "/": () => {renderTemplate(templateHome, "content")},
+
+      "/about": () => {renderTemplate(templateAbout, "content")},
 
       "/reservation": () => {
         renderTemplate(templateReservation, "content")
-        //initUsers()
+        initUsers()
       },
       "/goCarting": () => {
         renderTemplate(templateGoCarting, "content")
         //initFindUser(match)
+      },
+      "/paintBall": () => {
+        renderTemplate(templatePaintBall, "content")
       },
 
       "/miniGolf": () => {

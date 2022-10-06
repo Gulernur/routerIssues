@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p> hej </p>
+    <input type="date" id="test" /> 
+
+    <script>
+        if ( $('#test')[0].type != 'date' ) $('#test').datepicker();
+    </script>
 </body>
 </html>
